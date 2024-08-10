@@ -1,7 +1,7 @@
 
 Hello there ✌️, 
 
-![snake gif](https://github.com/ishararaviget9/ishararaviget9/blob/output/github-contribution-grid-snake-dark.svg)
+![snake gif](https://github.com/isharaimagines/isharaimagines/blob/output/github-contribution-grid-snake-dark.svg)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -41,13 +41,13 @@ Armed with statistical prowess and a knack for pattern recognition, I unravel th
                     
 <h3 align="center">Stars</h3>
 <div align="center">
-<img align="center" height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isharaplusplus&layout=compact&theme=nightowl" alt=isharaplusplus />
+<img align="center" height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isharaimagines&layout=compact&theme=nightowl" alt=isharaimagines />
 </div>
 <img align="center" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <h3 align="center">Statistics</h3>
 <div align="center">
-<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=isharaplusplus&theme=tokyonight" height="180em" />
+<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=isharaimagines&theme=tokyonight" height="180em" />
 </div>
                  
                   
