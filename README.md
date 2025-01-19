@@ -20,11 +20,6 @@
 <div align="center">
 <img align="center" height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isharaimagines&layout=compact&theme=nightowl" alt=isharaimagines />
 </div>
-
-## Statistics
-<div align="center">
-<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=isharaimagines&theme=tokyonight" height="180em" />
-</div>
                  
                   
               
