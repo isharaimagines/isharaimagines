@@ -17,14 +17,13 @@
 ![snake gif](https://github.com/isharaimagines/isharaimagines/blob/output/github-contribution-grid-snake-dark.svg)
                     
 ## Stars
-<div align="center">
 <img align="center" height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isharaimagines&layout=compact&theme=nightowl" alt=isharaimagines />
-</div>
 
+### Badges
 
-## My GitHub Stats
+<b>My GitHub Stats</b>
 
-<a href="http://www.github.com/danielcranney"><img src="https://github-readme-stats.vercel.app/api?username=isharaimagines&show_icons=true&hide=contribs&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&show_icons=true" alt="isharaimagines's GitHub stats" /></a>
+<a href="http://www.github.com/isharaimagines"><img src="https://github-readme-stats.vercel.app/api?username=isharaimagines&show_icons=true&hide=contribs&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&show_icons=true" alt="isharaimagines's GitHub stats" /></a>
 
                  
                   
