@@ -3,28 +3,9 @@
 
 <img src="https://github.com/user-attachments/assets/c39d3852-6524-4364-bf3c-c0933cbee421" alt="drawing" width="100"/>
 
-### A passionate tech enthusiast with a multifaceted career spanning several pivotal roles in the technology landscape. With a relentless curiosity and a penchant for innovation, I've embarked on a journey to explore, create, and optimize in the world of software and data. Here's a glimpse into my diverse skill set and contributions across various domains:
+### I am a dedicated and passionate computer science student currently pursuing my BSc (Hon) in Computer Science at Plymouth University, with an expected graduation in December 2025. My journey in technology has been marked by a strong commitment to innovation and problem-solving, demonstrated through various projects and internships. 
 
-#### 🌐 Full Stack Developer :
-As a Full Stack Developer, I thrive on creating end-to-end solutions. I'm equally at home designing sleek user interfaces as I am crafting robust back-end systems. My code is not just functional; it's elegant and efficient.
-
-#### 📈 System Analyst :
-Bridging the gap between technology and business, I have a knack for dissecting intricate processes, identifying opportunities, and designing systems that empower organizations to thrive.
-
-#### 🧬 Computer Scientist :
-My quest for knowledge leads me down the path of exploration. As a computer scientist, I delve deep into the theoretical underpinnings of technology, researching algorithms, and conceptualizing computational models that shape the future.
-
-#### 🌟 UI Engineer :
-With a keen eye for aesthetics and a passion for user experience, I design interfaces that captivate and delight. My creations bridge the gap between functionality and beauty.
-
-#### 💾 Database Engineer :
-Data security and efficiency are paramount in my work as a database engineer. I architect and manage data storage systems that keep information safe, accessible, and performant.
-
-#### 🎨 Web Designer :
-My creative side comes to life as a web designer. I transform ideas into visually stunning and user-friendly web experiences, aligning form and function seamlessly.
-
-#### 📈 Data Scientist :
-Armed with statistical prowess and a knack for pattern recognition, I unravel the secrets hidden within data. My data-driven insights empower organizations to make informed decisions and chart their course to success.
+#### 🌐 Full Stack Developer | 📈 System Analyst | 🧬 Computer Scientist | 🌟 UI Engineer | 💾 Database Engineer | 🎨 Web Designer | 📈 Data Scientist
 
 ### Skills
 
