@@ -1,7 +1,7 @@
 
-Hello there ✌️, 
+# Hello there! 
 
-<img src="https://github.com/user-attachments/assets/d09cc85f-9779-4e1f-9098-e2275ff54b63" alt="drawing" width="100"/>
+<img src="https://github.com/user-attachments/assets/c39d3852-6524-4364-bf3c-c0933cbee421" alt="drawing" width="100"/>
 
 ### A passionate tech enthusiast with a multifaceted career spanning several pivotal roles in the technology landscape. With a relentless curiosity and a penchant for innovation, I've embarked on a journey to explore, create, and optimize in the world of software and data. Here's a glimpse into my diverse skill set and contributions across various domains:
 
