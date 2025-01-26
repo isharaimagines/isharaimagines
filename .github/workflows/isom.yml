@@ -1,0 +1,45 @@
+name: Isometric Contributions
+
+on:
+  # Schedule the workflow to run daily
+  schedule:
+    - cron: "0 0 * * *"
+  
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+  
+  # Run the workflow on pushes to the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    name: Generate Isometric Contributions
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (required for the `isometric-contributions` tool)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Step 3: Install and run `isometric-contributions`
+      - name: Generate Isometric Contributions
+        run: |
+          npx isometric-contributions -o isometric-contributions.png
+          
+      # Step 4: Upload the artifact or commit it to a branch
+      - name: Upload to Output Branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: .
+          keep_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
