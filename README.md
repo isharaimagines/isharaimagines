@@ -8,7 +8,7 @@
 #### 🌐 Full Stack Developer | 📈 System Analyst | 🧬 Computer Scientist | 🌟 UI Engineer | 💾 Database Engineer | 🎨 Web Designer | 📈 Data Scientist
 
 ## Activities
-![snake gif](https://github.com/isharaimagines/isharaimagines/blob/output/github-contribution-grid-snake-dark.svg)
+![snake gif](https://raw.githubusercontent.com/isharaimagines/isharaimagines/output/github-contribution-grid-snake-dark.svg)
                     
 ### Badges
 
