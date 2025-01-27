@@ -1,88 +1,7 @@
 import axios from 'axios';
-import * as type from './type';
-
 export const URL = 'https://api.github.com/graphql';
 const maxReposOneQuery = 100;
-
-export type CommitContributionsByRepository = Array<{
-    contributions: {
-        totalCount: number;
-    };
-    repository: {
-        primaryLanguage: {
-            name: string;
-            /** "#RRGGBB" */
-            color: string | null;
-        } | null;
-    };
-}>;
-
-export type ContributionCalendar = {
-    isHalloween: boolean;
-    totalContributions: number;
-    weeks: Array<{
-        contributionDays: Array<{
-            contributionCount: number;
-            contributionLevel: type.ContributionLevel;
-            /** "YYYY-MM-DD hh:mm:ss.SSS+00:00" */
-            date: string;
-        }>;
-    }>;
-};
-
-export type Repositories = {
-    edges: Array<{
-        cursor: string;
-    }>;
-    nodes: Array<{
-        forkCount: number;
-        stargazerCount: number;
-    }>;
-};
-
-/** Response(first) of GraphQL */
-export type ResponseType = {
-    data?: {
-        user: {
-            contributionsCollection: {
-                commitContributionsByRepository: CommitContributionsByRepository;
-                contributionCalendar: ContributionCalendar;
-                totalCommitContributions: number;
-                totalIssueContributions: number;
-                totalPullRequestContributions: number;
-                totalPullRequestReviewContributions: number;
-                totalRepositoryContributions: number;
-            };
-            repositories: Repositories;
-        };
-    };
-    errors?: [
-        {
-            message: string;
-            // snip
-        }
-    ];
-};
-
-/** Response(next) of GraphQL */
-export type ResponseNextType = {
-    data?: {
-        user: {
-            repositories: Repositories;
-        };
-    };
-    errors?: [
-        {
-            message: string;
-            // snip
-        }
-    ];
-};
-
-export const fetchFirst = async (
-    token: string,
-    userName: string
-): Promise<ResponseType> => {
+export const fetchFirst = async (token, userName) => {
     const headers = {
         Authorization: `bearer ${token}`,
     };
@@ -133,18 +52,12 @@ export const fetchFirst = async (
         `.replace(/\s+/g, ' '),
         variables: { login: userName },
     };
-
-    const response = await axios.post<ResponseType>(URL, request, {
+    const response = await axios.post(URL, request, {
         headers: headers,
     });
     return response.data;
 };
-
-export const fetchNext = async (
-    token: string,
-    userName: string,
-    cursor: string
-): Promise<ResponseNextType> => {
+export const fetchNext = async (token, userName, cursor) => {
     const headers = {
         Authorization: `bearer ${token}`,
     };
@@ -169,21 +82,15 @@ export const fetchNext = async (
             cursor: cursor,
         },
     };
-    const response = await axios.post<ResponseNextType>(URL, request, {
+    const response = await axios.post(URL, request, {
         headers: headers,
     });
     return response.data;
 };
-
 /** Fetch data from GitHub GraphQL */
-export const fetchData = async (
-    token: string,
-    userName: string,
-    maxRepos: number
-): Promise<ResponseType> => {
+export const fetchData = async (token, userName, maxRepos) => {
     const res1 = await fetchFirst(token, userName);
     const result = res1.data;
-
     if (result && result.user.repositories.nodes.length === maxReposOneQuery) {
         const repos1 = result.user.repositories;
         let cursor = repos1.edges[repos1.edges.length - 1].cursor;
@@ -196,7 +103,8 @@ export const fetchData = async (
                     break;
                 }
                 cursor = repos2.edges[repos2.edges.length - 1].cursor;
-            } else {
+            }
+            else {
                 break;
             }
         }

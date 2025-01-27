@@ -1,5 +1,3 @@
-import * as type from "./type";
-
 // export const NormalSettings: type.NormalColorSettings = {
 //   type: "normal",
 //   backgroundColor: "#ffffff",
@@ -9,7 +7,6 @@ import * as type from "./type";
 //   radarColor: "#47a042",
 //   contribColors: ["#efefef", "#d8e887", "#8cc569", "#47a042", "#1d6a23"],
 // };
-
 // export const HalloweenSettings: type.NormalColorSettings = {
 //   type: "normal",
 //   backgroundColor: "#ffffff",
@@ -19,9 +16,8 @@ import * as type from "./type";
 //   radarColor: "#47a042",
 //   contribColors: ["#efefef", "#ffed4a", "#ffc402", "#fe9400", "#fa6100"],
 // };
-
 // Northern hemisphere
-export const NorthSeasonSettings: type.SeasonColorSettings = {
+export const NorthSeasonSettings = {
   type: "season",
   backgroundColor: "#ffffff",
   foregroundColor: "#00000f",
@@ -33,8 +29,7 @@ export const NorthSeasonSettings: type.SeasonColorSettings = {
   contribColors3: ["#efefef", "#ffed4a", "#ffc402", "#fe9400", "#fa6100"], // autumn
   contribColors4: ["#efefef", "#999999", "#cccccc", "#dddddd", "#eeeeee"], // winter
 };
-
-export const NightViewSettings: type.NormalColorSettings = {
+export const NightViewSettings = {
   type: "normal",
   backgroundColor: "#00000f",
   foregroundColor: "#eeeeff",
@@ -49,8 +44,7 @@ export const NightViewSettings: type.NormalColorSettings = {
     "rgb(25,165,240)",
   ],
 };
-
-export const NightGreenSettings: type.NormalColorSettings = {
+export const NightGreenSettings = {
   type: "normal",
   backgroundColor: "#00000f",
   foregroundColor: "#eeeeff",
@@ -59,8 +53,7 @@ export const NightGreenSettings: type.NormalColorSettings = {
   radarColor: "#47a042",
   contribColors: ["#444444", "#1B7D28", "#24A736", "#2DD143", "#57DA69"],
 };
-
-export const GitBlockSettings: type.BitmapPatternSettings = {
+export const GitBlockSettings = {
   type: "bitmap",
   backgroundColor: "#ffffff",
   foregroundColor: "#00000f",

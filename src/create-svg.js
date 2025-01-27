@@ -1,20 +1,15 @@
 import * as d3 from "d3";
 import { JSDOM } from "jsdom";
-import * as contrib from "./create-3d-contrib";
-import * as util from "./utils";
-import * as type from "./type";
+// import * as contrib from "./create-3d-contrib";
+
+import { addDefines, create3DContrib } from "./create-3d-contrib.js";
+import { inertThousandSeparator } from "./utils.js";
 
 const width = 1280;
 const height = 850;
-
-export const createSvg = (
-  userInfo: type.UserInfo,
-  settings: type.Settings,
-  isForcedAnimation: boolean
-): string => {
+export const createSvg = (userInfo, settings, isForcedAnimation) => {
   let svgWidth = width;
   let svgHeight = height;
-
   const fakeDom = new JSDOM(
     '<!DOCTYPE html><html><body><div class="container"></div></body></html>'
   );
@@ -25,13 +20,10 @@ export const createSvg = (
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
-
   svg
     .append("style")
     .html('* { font-family: "Ubuntu", "Helvetica", "Arial", sans-serif; }');
-
-  contrib.addDefines(svg, settings);
-
+  addDefines(svg, settings);
   // background
   svg
     .append("rect")
@@ -40,9 +32,8 @@ export const createSvg = (
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .attr("fill", settings.backgroundColor);
-
   // 3D-Contrib Calendar
-  contrib.create3DContrib(
+  create3DContrib(
     svg,
     userInfo,
     0,
@@ -52,27 +43,21 @@ export const createSvg = (
     settings,
     isForcedAnimation
   );
-
   const contributions = userInfo.contributionCalendar;
-
   const sortedContributions = contributions.sort((a, b) => {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
   });
-
   const bestContribution = sortedContributions.reduce((best, current) => {
     return current.contributionCount > best.contributionCount ? current : best;
   });
-
   const firstContributionDate = new Date(sortedContributions[0].date);
   const lastContributionDate = new Date(
     sortedContributions[sortedContributions.length - 1].date
   );
-
   const bestDate = new Date(bestContribution.date);
   const bestMonth = bestDate.toLocaleString("default", { month: "short" });
   const bestDay = bestDate.getDate();
   const bestCount = bestContribution.contributionCount;
-
   const firstMonth = firstContributionDate.toLocaleString("default", {
     month: "short",
   });
@@ -81,12 +66,9 @@ export const createSvg = (
     month: "short",
   });
   const lastDay = lastContributionDate.getDate();
-
   const group = svg.append("g");
-
   const titleBoxWidth = 250;
   const titleBoxHeight = 130;
-
   // Create a rectangle (box) for the title
   group
     .append("rect")
@@ -99,7 +81,6 @@ export const createSvg = (
     .attr("stroke-width", 1)
     .attr("rx", 8)
     .attr("ry", 8);
-
   // Title Text
   group
     .append("text")
@@ -110,7 +91,6 @@ export const createSvg = (
     .attr("text-anchor", "start")
     .attr("fill", "#fafafa")
     .text("Contributions");
-
   //contribution count
   group
     .append("text")
@@ -119,8 +99,7 @@ export const createSvg = (
     .attr("y", 140)
     .attr("text-anchor", "start")
     .attr("fill", "#0D92F4")
-    .text(util.inertThousandSeparator(userInfo.totalContributions));
-
+    .text(inertThousandSeparator(userInfo.totalContributions));
   //total name
   group
     .append("text")
@@ -131,7 +110,6 @@ export const createSvg = (
     .attr("text-anchor", "start")
     .attr("fill", "#fafafa")
     .text("Total");
-
   //duration
   group
     .append("text")
@@ -141,7 +119,6 @@ export const createSvg = (
     .attr("text-anchor", "start")
     .attr("fill", "#dddddd")
     .text(`${firstMonth}-${firstDay} ${lastMonth}-${lastDay}`);
-
   group
     .append("text")
     .style("font-size", "36px")
@@ -150,7 +127,6 @@ export const createSvg = (
     .attr("text-anchor", "start")
     .attr("fill", "#0D92F4")
     .text(bestCount);
-
   //total name
   group
     .append("text")
@@ -161,7 +137,6 @@ export const createSvg = (
     .attr("text-anchor", "start")
     .attr("fill", "#fafafa")
     .text("Best day");
-
   //duration
   group
     .append("text")
@@ -171,6 +146,5 @@ export const createSvg = (
     .attr("text-anchor", "start")
     .attr("fill", "#dddddd")
     .text(`${bestMonth}-${bestDay}`);
-
   return container.html();
 };
