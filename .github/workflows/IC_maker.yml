@@ -16,6 +16,7 @@ jobs:
       GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
       USERNAME_TAG: ${{ secrets.USERNAME_TAG }}
       MAX_REPOS: ${{ secrets.MAX_REPOS }}
+      GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
 
     steps:
       - name: Checkout code
@@ -32,8 +33,12 @@ jobs:
       - name: Run the application
         run: npm run dev
 
-      - name: Upload SVG files
-        uses: actions/upload-artifact@v3
-        with:
-          name: svg-files
-          path: profile-3d-contrib/*.svg
+      - name: Commit and push SVG files
+        run: |
+          git config --local user.email "${{ secrets.GIT_USER_EMAIL }}" 
+          git config --local user.name "${{ secrets.USERNAME_TAG }}"
+          git add profile-3d-contrib/*.svg
+          git commit -m "Add generated SVG files" || echo "No changes to commit"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
