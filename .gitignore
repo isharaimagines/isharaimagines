@@ -8,7 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-profile-3d-contrib
 dist
 dist-ssr
 *.local
