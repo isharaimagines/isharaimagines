@@ -1,33 +1,32 @@
-name: Run Node.js Script
+name: TypeScript CI
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  run-script:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20.2
+          node-version: "20" # Specify the Node.js version you want to use
 
-      # Install production dependencies
       - name: Install dependencies
         run: npm install
-
-      # Run the script
-      - name: Run index.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
           MAX_REPOS: ${{ secrets.MAX_REPOS }}
-        run: node index.js $USERNAME
+
+      - name: Run the application
+        run: npx ts-node index.ts $USERNAME # Adjust the path to your TypeScript file
