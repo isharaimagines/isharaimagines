@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm install
         env:
-          GITHUB_TOKEN: ${{ secrets.TGITHUB_TOKEN }}
+          TGITHUB_TOKEN: ${{ secrets.TGITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
           MAX_REPOS: ${{ secrets.MAX_REPOS }}
 
