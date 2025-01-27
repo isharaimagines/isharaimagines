@@ -32,14 +32,17 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createSvg = void 0;
-const d3 = __importStar(require("d3"));
+
 const jsdom_1 = require("jsdom");
 const contrib = __importStar(require("./create-3d-contrib"));
 const pie = __importStar(require("./create-pie-language"));
 const radar = __importStar(require("./create-radar-contrib"));
 const util = __importStar(require("./utils"));
+
 const width = 1280;
 const height = 850;
 const pieHeight = 200 * 1.3;
@@ -47,17 +50,20 @@ const pieWidth = pieHeight * 2;
 const radarWidth = 400 * 1.3;
 const radarHeight = (radarWidth * 3) / 4;
 const radarX = width - radarWidth - 40;
-const createSvg = (userInfo, settings, isForcedAnimation) => {
+
+const createSvg = async (userInfo, settings, isForcedAnimation) => {
+    const d3 = await import("d3"); // Dynamic import of d3
+
     let svgWidth = width;
     let svgHeight = height;
     if (settings.type === "pie_lang_only") {
         svgWidth = pieWidth;
         svgHeight = pieHeight;
-    }
-    else if (settings.type === "radar_contrib_only") {
+    } else if (settings.type === "radar_contrib_only") {
         svgWidth = radarWidth;
         svgHeight = radarHeight;
     }
+
     const fakeDom = new jsdom_1.JSDOM('<!DOCTYPE html><html><body><div class="container"></div></body></html>');
     const container = d3.select(fakeDom.window.document).select(".container");
     const svg = container
@@ -66,13 +72,12 @@ const createSvg = (userInfo, settings, isForcedAnimation) => {
         .attr("width", svgWidth)
         .attr("height", svgHeight)
         .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
-    svg
-        .append("style")
-        .html('* { font-family: "Ubuntu", "Helvetica", "Arial", sans-serif; }');
+    
+    svg.append("style").html('* { font-family: "Ubuntu", "Helvetica", "Arial", sans-serif; }');
     contrib.addDefines(svg, settings);
-    // background
-    svg
-        .append("rect")
+    
+    // Background
+    svg.append("rect")
         .attr("x", 0)
         .attr("y", 0)
         .attr("width", svgWidth)
