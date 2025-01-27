@@ -1,21 +1,33 @@
-name: GitHub-Isometric-Contribution
+name: Run Node.js Script
 
 on:
-  schedule: # 03:00 JST == 18:00 UTC
-    - cron: "0 */24 * * *"
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  run-script:
     runs-on: ubuntu-latest
-    name: generate-github-profile-3d-contrib
+
     steps:
-      - uses: actions/checkout@v3
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Install production dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run the script
+      - name: Run index.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
           MAX_REPOS: ${{ secrets.MAX_REPOS }}
-      - name: Install dependencies and run script
-        run: |
-          npm install
-          node index.js isharaimagines
+        run: node index.js $USERNAME
