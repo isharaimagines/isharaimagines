@@ -1,4 +1,3 @@
-import * as d3 from "d3";
 import * as util from "./utils";
 import * as type from "./type";
 
@@ -10,11 +9,12 @@ const DARKER_TOP = 0;
 const diffDate = (beforeDate: number, afterDate: number): number =>
   Math.floor((afterDate - beforeDate) / (24 * 60 * 60 * 1000));
 
-const createGradation = (
+const createGradation = async (
   dayOfMonth: number,
   color1: string,
   color2: string
-): string => {
+): Promise<string> => {
+  const d3 = await import("d3");
   let ratio;
   if (dayOfMonth <= 7) {
     ratio = 0.2;
@@ -31,11 +31,11 @@ const createGradation = (
   return color(ratio);
 };
 
-const decideSeasonColor = (
+const decideSeasonColor = async (
   contributionLevel: number,
   settings: type.SeasonColorSettings,
   date: Date
-): string => {
+): Promise<string> => {
   const sunday = new Date(date.getTime());
   sunday.setDate(sunday.getDate() - sunday.getDay());
 
@@ -94,34 +94,37 @@ const decideSeasonColor = (
   }
 };
 
-const addNormalColor = (
+const addNormalColor = async (
   path: d3.Selection<SVGRectElement, unknown, null, unknown>,
   contributionLevel: number,
   settings: type.NormalColorSettings,
   darker: number
-): void => {
+): Promise<void> => {
+  const d3 = await import("d3");
   const color = settings.contribColors[contributionLevel];
   path.attr("fill", d3.rgb(color).darker(darker).toString());
 };
 
-const addSeasonColor = (
+const addSeasonColor = async (
   path: d3.Selection<SVGRectElement, unknown, null, unknown>,
   contributionLevel: number,
   settings: type.SeasonColorSettings,
   darker: number,
   date: Date
-): void => {
-  const color = decideSeasonColor(contributionLevel, settings, date);
+): Promise<void> => {
+  const d3 = await import("d3");
+  const color = await decideSeasonColor(contributionLevel, settings, date);
   path.attr("fill", d3.rgb(color).darker(darker).toString());
 };
 
-const addRainbowColor = (
+const addRainbowColor = async (
   path: d3.Selection<SVGRectElement, unknown, null, unknown>,
   contributionLevel: number,
   settings: type.RainbowColorSettings,
   darker: number,
   week: number
-): void => {
+): Promise<void> => {
+  const d3 = await import("d3");
   const offsetHue = week * settings.hueRatio;
   const saturation = settings.saturation;
   const lightness = settings.contribLightness[contributionLevel];
@@ -151,14 +154,15 @@ const addBitmapPattern = (
 
 const atan = (value: number) => (Math.atan(value) * 360) / 2 / Math.PI;
 
-const addPatternForBitmap = (
+const addPatternForBitmap = async (
   defs: d3.Selection<SVGDefsElement, unknown, null, unknown>,
   panelPattern: type.PanelPattern,
   contributionLevel: number,
   panel: PanelType,
   backgroundColor: string,
   foregroundColor: string
-): void => {
+): Promise<void> => {
+  const d3 = await import("d3");
   const width = Math.max(1, panelPattern.width);
   const height = Math.max(1, panelPattern.bitmap.length);
   const pattern = defs
@@ -193,10 +197,11 @@ const addPatternForBitmap = (
     .attr("d", path.toString());
 };
 
-export const addDefines = (
+export const addDefines = async (
   svg: d3.Selection<SVGSVGElement, unknown, null, unknown>,
   settings: type.Settings
-): void => {
+): Promise<void> => {
+  const d3 = await import("d3");
   if (settings.type === "bitmap") {
     const defs = svg.append("defs");
 
