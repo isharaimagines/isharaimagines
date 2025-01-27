@@ -18,10 +18,10 @@ dotenv.config();
 
 const main = async () => {
   try {
-    const token = process.env.ACCESS_TOKEN;
+    const token = process.env.GIT_TOKEN;
+    console.log(token);
     if (!token) {
       core.setFailed("GITHUB_TOKEN is empty");
-      console.log(token);
       return;
     }
     const max = process.env.MAX_REPOS;

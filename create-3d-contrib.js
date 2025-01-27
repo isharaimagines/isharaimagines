@@ -174,7 +174,6 @@ export const create3DContrib = (
   settings,
   isForcedAnimation = false
 ) => {
-  console.log("userInfo:", userInfo);
   if (userInfo.contributionCalendar.length === 0) {
     return;
   }

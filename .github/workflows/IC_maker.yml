@@ -12,6 +12,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+      USERNAME_TAG: ${{ secrets.USERNAME_TAG }}
+      MAX_REPOS: ${{ secrets.MAX_REPOS }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,10 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          USERNAME_TAG: ${{ secrets.USERNAME_TAG }}
-          MAX_REPOS: ${{ secrets.MAX_REPOS }}
 
       - name: Run the application
         run: npm run dev
