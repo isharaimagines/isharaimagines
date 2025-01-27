@@ -29,4 +29,4 @@ jobs:
           MAX_REPOS: ${{ secrets.MAX_REPOS }}
 
       - name: Run the application
-        run: npx ts-node index.ts $USERNAME # Adjust the path to your TypeScript file
+        run: npm start
