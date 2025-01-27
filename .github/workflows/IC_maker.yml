@@ -29,4 +29,4 @@ jobs:
           MAX_REPOS: ${{ secrets.MAX_REPOS }}
 
       - name: Run the application
-        run: npm start
+        run: npm run dev

@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "ts-node index.ts",
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' index.ts"
+    "dev": "node index.js"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
