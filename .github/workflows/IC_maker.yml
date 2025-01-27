@@ -31,3 +31,9 @@ jobs:
 
       - name: Run the application
         run: npm run dev
+
+      - name: Upload SVG files
+        uses: actions/upload-artifact@v3
+        with:
+          name: svg-files
+          path: profile-3d-contrib/*.svg
