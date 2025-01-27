@@ -1,6 +1,8 @@
 name: TypeScript CI
 
 on:
+  schedule:
+    - cron: "0 0 * * *" # This runs at midnight UTC every day
   push:
     branches:
       - main

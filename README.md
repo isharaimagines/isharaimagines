@@ -8,6 +8,8 @@
 
 ## Activities
 
+![svg](https://raw.githubusercontent.com/isharaimagines/isharaimagines/main/profile-3d-contrib/profile-night-view.svg)
+
 ### Badges
 
 #### My GitHub Stats
