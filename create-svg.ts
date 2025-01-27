@@ -1,3 +1,4 @@
+import * as d3 from "d3";
 import { JSDOM } from "jsdom";
 import * as contrib from "./create-3d-contrib";
 import * as util from "./utils";
@@ -6,13 +7,11 @@ import * as type from "./type";
 const width = 1280;
 const height = 850;
 
-export const createSvg = async (
+export const createSvg = (
   userInfo: type.UserInfo,
   settings: type.Settings,
   isForcedAnimation: boolean
-): Promise<string> => {
-  const d3 = await import("d3");
-
+): string => {
   let svgWidth = width;
   let svgHeight = height;
 
@@ -33,6 +32,7 @@ export const createSvg = async (
 
   contrib.addDefines(svg, settings);
 
+  // background
   svg
     .append("rect")
     .attr("x", 0)
@@ -41,6 +41,7 @@ export const createSvg = async (
     .attr("height", svgHeight)
     .attr("fill", settings.backgroundColor);
 
+  // 3D-Contrib Calendar
   contrib.create3DContrib(
     svg,
     userInfo,

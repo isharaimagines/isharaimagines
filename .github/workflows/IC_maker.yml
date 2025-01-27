@@ -25,7 +25,7 @@ jobs:
         run: npm install
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
+          USERNAME: ${{ secrets.USERNAME_TAG }}
           MAX_REPOS: ${{ secrets.MAX_REPOS }}
 
       - name: Run the application

@@ -1,3 +1,4 @@
+import * as d3 from "d3";
 import * as util from "./utils";
 import * as type from "./type";
 
@@ -9,12 +10,11 @@ const DARKER_TOP = 0;
 const diffDate = (beforeDate: number, afterDate: number): number =>
   Math.floor((afterDate - beforeDate) / (24 * 60 * 60 * 1000));
 
-const createGradation = async (
+const createGradation = (
   dayOfMonth: number,
   color1: string,
   color2: string
-): Promise<string> => {
-  const d3 = await import("d3");
+): string => {
   let ratio;
   if (dayOfMonth <= 7) {
     ratio = 0.2;
@@ -31,11 +31,11 @@ const createGradation = async (
   return color(ratio);
 };
 
-const decideSeasonColor = async (
+const decideSeasonColor = (
   contributionLevel: number,
   settings: type.SeasonColorSettings,
   date: Date
-): Promise<string> => {
+): string => {
   const sunday = new Date(date.getTime());
   sunday.setDate(sunday.getDate() - sunday.getDay());
 
@@ -94,52 +94,25 @@ const decideSeasonColor = async (
   }
 };
 
-const addNormalColor = async (
+const addNormalColor = (
   path: d3.Selection<SVGRectElement, unknown, null, unknown>,
   contributionLevel: number,
   settings: type.NormalColorSettings,
   darker: number
-): Promise<void> => {
-  const d3 = await import("d3");
+): void => {
   const color = settings.contribColors[contributionLevel];
   path.attr("fill", d3.rgb(color).darker(darker).toString());
 };
 
-const addSeasonColor = async (
+const addSeasonColor = (
   path: d3.Selection<SVGRectElement, unknown, null, unknown>,
   contributionLevel: number,
   settings: type.SeasonColorSettings,
   darker: number,
   date: Date
-): Promise<void> => {
-  const d3 = await import("d3");
-  const color = await decideSeasonColor(contributionLevel, settings, date);
+): void => {
+  const color = decideSeasonColor(contributionLevel, settings, date);
   path.attr("fill", d3.rgb(color).darker(darker).toString());
-};
-
-const addRainbowColor = async (
-  path: d3.Selection<SVGRectElement, unknown, null, unknown>,
-  contributionLevel: number,
-  settings: type.RainbowColorSettings,
-  darker: number,
-  week: number
-): Promise<void> => {
-  const d3 = await import("d3");
-  const offsetHue = week * settings.hueRatio;
-  const saturation = settings.saturation;
-  const lightness = settings.contribLightness[contributionLevel];
-  const values = [...Array<undefined>(7)]
-    .map((_, i) => (i * 60 + offsetHue) % 360)
-    .map((hue) => `hsl(${hue},${saturation},${lightness})`)
-    .map((c) => d3.rgb(c).darker(darker).toString())
-    .join(";");
-
-  path
-    .append("animate")
-    .attr("attributeName", "fill")
-    .attr("values", values)
-    .attr("dur", settings.duration)
-    .attr("repeatCount", "indefinite");
 };
 
 type PanelType = "top" | "left" | "right";
@@ -154,15 +127,14 @@ const addBitmapPattern = (
 
 const atan = (value: number) => (Math.atan(value) * 360) / 2 / Math.PI;
 
-const addPatternForBitmap = async (
+const addPatternForBitmap = (
   defs: d3.Selection<SVGDefsElement, unknown, null, unknown>,
   panelPattern: type.PanelPattern,
   contributionLevel: number,
   panel: PanelType,
   backgroundColor: string,
   foregroundColor: string
-): Promise<void> => {
-  const d3 = await import("d3");
+): void => {
   const width = Math.max(1, panelPattern.width);
   const height = Math.max(1, panelPattern.bitmap.length);
   const pattern = defs
@@ -197,11 +169,10 @@ const addPatternForBitmap = async (
     .attr("d", path.toString());
 };
 
-export const addDefines = async (
+export const addDefines = (
   svg: d3.Selection<SVGSVGElement, unknown, null, unknown>,
   settings: type.Settings
-): Promise<void> => {
-  const d3 = await import("d3");
+): void => {
   if (settings.type === "bitmap") {
     const defs = svg.append("defs");
 
@@ -323,8 +294,6 @@ export const create3DContrib = (
       addNormalColor(topPanel, contribLevel, settings, DARKER_TOP);
     } else if (settings.type === "season") {
       addSeasonColor(topPanel, contribLevel, settings, DARKER_TOP, cal.date);
-    } else if (settings.type === "rainbow") {
-      addRainbowColor(topPanel, contribLevel, settings, DARKER_TOP, week);
     } else if (settings.type === "bitmap") {
       addBitmapPattern(topPanel, contribLevel, "top");
     }
@@ -353,8 +322,6 @@ export const create3DContrib = (
       addNormalColor(leftPanel, contribLevel, settings, DARKER_LEFT);
     } else if (settings.type === "season") {
       addSeasonColor(leftPanel, contribLevel, settings, DARKER_LEFT, cal.date);
-    } else if (settings.type === "rainbow") {
-      addRainbowColor(leftPanel, contribLevel, settings, DARKER_LEFT, week);
     } else if (settings.type === "bitmap") {
       addBitmapPattern(leftPanel, contribLevel, "left");
     }
@@ -402,8 +369,6 @@ export const create3DContrib = (
         DARKER_RIGHT,
         cal.date
       );
-    } else if (settings.type === "rainbow") {
-      addRainbowColor(rightPanel, contribLevel, settings, DARKER_RIGHT, week);
     } else if (settings.type === "bitmap") {
       addBitmapPattern(rightPanel, contribLevel, "right");
     }

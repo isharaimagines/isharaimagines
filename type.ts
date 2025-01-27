@@ -1,24 +1,7 @@
 export interface CalendarInfo {
-  /* ... */
-}
-export interface LangInfo {
-  /* ... */
-}
-export interface UserInfo {
-  /* ... */
-}
-
-export interface PanelPattern {
-  /* ... */
-}
-export interface TopPanelPattern extends PanelPattern {
-  /* ... */
-}
-export interface SidePanelPattern extends PanelPattern {
-  /* ... */
-}
-export interface ContribPattern {
-  /* ... */
+  contributionCount: number;
+  contributionLevel: number;
+  date: Date;
 }
 
 export interface LangInfo {
@@ -27,26 +10,28 @@ export interface LangInfo {
   contributions: number;
 }
 
-export interface ContribPattern {
-  top: TopPanelPattern;
-  left: SidePanelPattern;
-  right: SidePanelPattern;
+export interface UserInfo {
+  isHalloween: boolean;
+  contributionCalendar: Array<CalendarInfo>;
+  contributesLanguage: Array<LangInfo>;
+  totalContributions: number;
+  totalCommitContributions: number;
+  totalIssueContributions: number;
+  totalPullRequestContributions: number;
+  totalPullRequestReviewContributions: number;
+  totalRepositoryContributions: number;
+  totalForkCount: number;
+  totalStargazerCount: number;
 }
 
-export interface TopPanelPattern extends PanelPattern {
-  backgroundColor: string;
-  foregroundColor: string;
-}
+export type ContributionLevel =
+  | "NONE"
+  | "FIRST_QUARTILE"
+  | "SECOND_QUARTILE"
+  | "THIRD_QUARTILE"
+  | "FOURTH_QUARTILE";
 
-export interface SidePanelPattern extends PanelPattern {
-  /** If omitted, calculate from the topPanel backgroundColor */
-  backgroundColor?: string;
-  /** If omitted, calculate from the topPanel foregroundColor */
-  foregroundColor?: string;
-}
-
-// Common settings shared by all types
-export interface CommonSettings {
+export interface BaseSettings {
   backgroundColor: string;
   foregroundColor: string;
   strongColor: string;
@@ -66,24 +51,24 @@ export interface CommonSettings {
     contrib: string;
   };
 }
-export interface UserInfo {
-  isHalloween: boolean;
-  contributionCalendar: Array<CalendarInfo>;
-  contributesLanguage: Array<LangInfo>;
-  totalContributions: number;
-  totalCommitContributions: number;
-  totalIssueContributions: number;
-  totalPullRequestContributions: number;
-  totalPullRequestReviewContributions: number;
-  totalRepositoryContributions: number;
-  totalForkCount: number;
-  totalStargazerCount: number;
+
+export interface NormalColorSettings extends BaseSettings {
+  type: "normal";
+
+  contribColors: [string, string, string, string, string];
 }
 
-export interface CalendarInfo {
-  contributionCount: number;
-  contributionLevel: number;
-  date: Date;
+export interface SeasonColorSettings extends BaseSettings {
+  type: "season";
+
+  /** first season (Mar. - Jun.) */
+  contribColors1: [string, string, string, string, string];
+  /** second season (Jun. - Sep.) */
+  contribColors2: [string, string, string, string, string];
+  /** third season (Sep. - Dec.) */
+  contribColors3: [string, string, string, string, string];
+  /** Fourth season (Dec. - Mar.) */
+  contribColors4: [string, string, string, string, string];
 }
 
 export interface PanelPattern {
@@ -92,63 +77,42 @@ export interface PanelPattern {
   bitmap: (number | string)[];
 }
 
-export type ContributionLevel =
-  | "NONE"
-  | "FIRST_QUARTILE"
-  | "SECOND_QUARTILE"
-  | "THIRD_QUARTILE"
-  | "FOURTH_QUARTILE";
-// Settings specifically for Radar contributions
-// export interface RadarContribSettings extends CommonSettings {
-//   weakColor: string;
-//   radarColor: string;
-// }
-
-// // Settings specifically for Pie language charts
-// export interface PieLangSettings extends CommonSettings {}
-
-// Settings specific to bitmap patterns
-export interface BitmapPatternSettings {
-  contribPatterns: ContribPattern[];
+export interface TopPanelPattern extends PanelPattern {
+  backgroundColor: string;
+  foregroundColor: string;
 }
 
-// Settings for colored contributions (Normal, Season, Rainbow)
-export interface ColorSettings {
-  strongColor: string;
+export interface SidePanelPattern extends PanelPattern {
+  /** If omitted, calculate from the topPanel backgroundColor */
+  backgroundColor?: string;
+  /** If omitted, calculate from the topPanel foregroundColor */
+  foregroundColor?: string;
 }
 
-export interface NormalColorSettings extends CommonSettings {
-  type: "normal";
-  contribColors: [string, string, string, string, string];
+export interface ContribPattern {
+  top: TopPanelPattern;
+  left: SidePanelPattern;
+  right: SidePanelPattern;
 }
 
-export interface SeasonColorSettings extends CommonSettings {
-  type: "season";
-  contribColors1: [string, string, string, string, string];
-  contribColors2: [string, string, string, string, string];
-  contribColors3: [string, string, string, string, string];
-  contribColors4: [string, string, string, string, string];
-}
-
-export interface RainbowColorSettings extends CommonSettings {
-  type: "rainbow";
-  saturation: string;
-  contribLightness: [string, string, string, string, string];
-  duration: string;
-  hueRatio: number;
-}
-
-export interface BitmapPatternSettings extends CommonSettings {
+export interface BitmapPatternSettings extends BaseSettings {
   type: "bitmap";
-  contribPatterns: ContribPattern[];
+  growingAnimation?: boolean;
+
+  contribPatterns: [
+    ContribPattern,
+    ContribPattern,
+    ContribPattern,
+    ContribPattern,
+    ContribPattern
+  ];
 }
 
 export type FullSettings =
   | NormalColorSettings
   | SeasonColorSettings
-  | RainbowColorSettings
   | BitmapPatternSettings;
 
-export type Settings = FullSettings; // Settings is now ONLY FullSettings
+export type Settings = FullSettings;
 
 export type SettingFile = Settings | Settings[];
