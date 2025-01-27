@@ -1,4 +1,3 @@
-import * as d3 from "d3";
 import { JSDOM } from "jsdom";
 import * as contrib from "./create-3d-contrib";
 import * as util from "./utils";
@@ -7,11 +6,13 @@ import * as type from "./type";
 const width = 1280;
 const height = 850;
 
-export const createSvg = (
+export const createSvg = async (
   userInfo: type.UserInfo,
   settings: type.Settings,
   isForcedAnimation: boolean
-): string => {
+): Promise<string> => {
+  const d3 = await import("d3");
+
   let svgWidth = width;
   let svgHeight = height;
 
@@ -38,9 +39,8 @@ export const createSvg = (
     .attr("y", 0)
     .attr("width", svgWidth)
     .attr("height", svgHeight)
-    .attr("fill", settings.backgroundColor); // Safe to access backgroundColor
+    .attr("fill", settings.backgroundColor);
 
-  // No more type checks needed here!
   contrib.create3DContrib(
     svg,
     userInfo,

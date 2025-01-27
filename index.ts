@@ -38,61 +38,77 @@ export const main = async (): Promise<void> => {
         "length" in settingFile ? settingFile : [settingFile];
       for (const settingInfo of settingInfos) {
         const fileName = settingInfo.fileName || "profile-customize.svg";
-        f.writeFile(fileName, create.createSvg(userInfo, settingInfo, false));
+        const svgString = await create.createSvg(userInfo, settingInfo, false);
+        await f.writeFile(fileName, svgString);
       }
     } else {
       const settings = userInfo.isHalloween
         ? template.HalloweenSettings
         : template.NormalSettings;
 
-      f.writeFile(
-        "profile-green-animate.svg",
-        create.createSvg(userInfo, settings, true)
-      );
-      f.writeFile(
-        "profile-green.svg",
-        create.createSvg(userInfo, settings, false)
-      );
+      const svgAnimate = await create.createSvg(userInfo, settings, true);
+      await f.writeFile("profile-green-animate.svg", svgAnimate);
+
+      const svgNormal = await create.createSvg(userInfo, settings, false);
+      await f.writeFile("profile-green.svg", svgNormal);
 
       // Northern hemisphere
-      f.writeFile(
-        "profile-season-animate.svg",
-        create.createSvg(userInfo, template.NorthSeasonSettings, true)
+      const svgNorthAnimate = await create.createSvg(
+        userInfo,
+        template.NorthSeasonSettings,
+        true
       );
-      f.writeFile(
-        "profile-season.svg",
-        create.createSvg(userInfo, template.NorthSeasonSettings, false)
+      await f.writeFile("profile-season-animate.svg", svgNorthAnimate);
+
+      const svgNorthNormal = await create.createSvg(
+        userInfo,
+        template.NorthSeasonSettings,
+        false
       );
+      await f.writeFile("profile-season.svg", svgNorthNormal);
 
       // Southern hemisphere
-      f.writeFile(
-        "profile-south-season-animate.svg",
-        create.createSvg(userInfo, template.SouthSeasonSettings, true)
+      const svgSouthAnimate = await create.createSvg(
+        userInfo,
+        template.SouthSeasonSettings,
+        true
       );
-      f.writeFile(
-        "profile-south-season.svg",
-        create.createSvg(userInfo, template.SouthSeasonSettings, false)
-      );
+      await f.writeFile("profile-south-season-animate.svg", svgSouthAnimate);
 
-      f.writeFile(
-        "profile-night-view.svg",
-        create.createSvg(userInfo, template.NightViewSettings, true)
+      const svgSouthNormal = await create.createSvg(
+        userInfo,
+        template.SouthSeasonSettings,
+        false
       );
+      await f.writeFile("profile-south-season.svg", svgSouthNormal);
 
-      f.writeFile(
-        "profile-night-green.svg",
-        create.createSvg(userInfo, template.NightGreenSettings, true)
+      const svgNightView = await create.createSvg(
+        userInfo,
+        template.NightViewSettings,
+        true
       );
+      await f.writeFile("profile-night-view.svg", svgNightView);
 
-      f.writeFile(
-        "profile-night-rainbow.svg",
-        create.createSvg(userInfo, template.NightRainbowSettings, true)
+      const svgNightGreen = await create.createSvg(
+        userInfo,
+        template.NightGreenSettings,
+        true
       );
+      await f.writeFile("profile-night-green.svg", svgNightGreen);
 
-      f.writeFile(
-        "profile-gitblock.svg",
-        create.createSvg(userInfo, template.GitBlockSettings, true)
+      const svgNightRainbow = await create.createSvg(
+        userInfo,
+        template.NightRainbowSettings,
+        true
       );
+      await f.writeFile("profile-night-rainbow.svg", svgNightRainbow);
+
+      const svgGitBlock = await create.createSvg(
+        userInfo,
+        template.GitBlockSettings,
+        true
+      );
+      await f.writeFile("profile-gitblock.svg", svgGitBlock);
     }
   } catch (error) {
     console.error(error);
