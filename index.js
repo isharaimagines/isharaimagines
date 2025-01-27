@@ -21,6 +21,7 @@ const main = async () => {
     const token = process.env.ACCESS_TOKEN;
     if (!token) {
       core.setFailed("GITHUB_TOKEN is empty");
+      console.log(token);
       return;
     }
     const max = process.env.MAX_REPOS;
