@@ -39,6 +39,7 @@ export const aggregateUserInfo = async (response) => {
       date: new Date(week.date),
     }));
   const contributesLanguage = {};
+
   user.contributionsCollection.commitContributionsByRepository
     .filter((repo) => repo.repository.primaryLanguage)
     .forEach((repo) => {
@@ -56,9 +57,11 @@ export const aggregateUserInfo = async (response) => {
         };
       }
     });
+
   const languages = Object.values(contributesLanguage).sort(
-    (obj1, obj2) => -compare(obj1.contributions, obj2.contributions)
+    (obj1, obj2) => obj2.contributions - obj1.contributions
   );
+
   const totalForkCount = user.repositories.nodes
     .map((node) => node.forkCount)
     .reduce((num1, num2) => num1 + num2, 0);

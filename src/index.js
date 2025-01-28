@@ -36,7 +36,6 @@ const main = async () => {
     }
     const response = await fetchData(token, userName, maxRepos);
     const userInfo = await aggregateUserInfo(response);
-
     writeFile(
       "profile-season.svg",
       createSvg(userInfo, NorthSeasonSettings, false)

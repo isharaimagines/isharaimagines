@@ -1,12 +1,12 @@
-import axios from 'axios';
-export const URL = 'https://api.github.com/graphql';
+import axios from "axios";
+export const URL = "https://api.github.com/graphql";
 const maxReposOneQuery = 100;
 export const fetchFirst = async (token, userName) => {
-    const headers = {
-        Authorization: `bearer ${token}`,
-    };
-    const request = {
-        query: `
+  const headers = {
+    Authorization: `bearer ${token}`,
+  };
+  const request = {
+    query: `
             query($login: String!) {
                 user(login: $login) {
                     contributionsCollection {
@@ -49,20 +49,20 @@ export const fetchFirst = async (token, userName) => {
                     }
                 }
             }
-        `.replace(/\s+/g, ' '),
-        variables: { login: userName },
-    };
-    const response = await axios.post(URL, request, {
-        headers: headers,
-    });
-    return response.data;
+        `.replace(/\s+/g, " "),
+    variables: { login: userName },
+  };
+  const response = await axios.post(URL, request, {
+    headers: headers,
+  });
+  return response.data;
 };
 export const fetchNext = async (token, userName, cursor) => {
-    const headers = {
-        Authorization: `bearer ${token}`,
-    };
-    const request = {
-        query: `
+  const headers = {
+    Authorization: `bearer ${token}`,
+  };
+  const request = {
+    query: `
             query($login: String!, $cursor: String!) {
                 user(login: $login) {
                     repositories(after: $cursor, first: ${maxReposOneQuery}, ownerAffiliations: OWNER) {
@@ -76,38 +76,37 @@ export const fetchNext = async (token, userName, cursor) => {
                     }
                 }
             }
-        `.replace(/\s+/g, ' '),
-        variables: {
-            login: userName,
-            cursor: cursor,
-        },
-    };
-    const response = await axios.post(URL, request, {
-        headers: headers,
-    });
-    return response.data;
+        `.replace(/\s+/g, " "),
+    variables: {
+      login: userName,
+      cursor: cursor,
+    },
+  };
+  const response = await axios.post(URL, request, {
+    headers: headers,
+  });
+  return response.data;
 };
 /** Fetch data from GitHub GraphQL */
 export const fetchData = async (token, userName, maxRepos) => {
-    const res1 = await fetchFirst(token, userName);
-    const result = res1.data;
-    if (result && result.user.repositories.nodes.length === maxReposOneQuery) {
-        const repos1 = result.user.repositories;
-        let cursor = repos1.edges[repos1.edges.length - 1].cursor;
-        while (repos1.nodes.length < maxRepos) {
-            const res2 = await fetchNext(token, userName, cursor);
-            if (res2.data) {
-                const repos2 = res2.data.user.repositories;
-                repos1.nodes.push(...repos2.nodes);
-                if (repos2.nodes.length !== maxReposOneQuery) {
-                    break;
-                }
-                cursor = repos2.edges[repos2.edges.length - 1].cursor;
-            }
-            else {
-                break;
-            }
+  const res1 = await fetchFirst(token, userName);
+  const result = res1.data;
+  if (result && result.user.repositories.nodes.length === maxReposOneQuery) {
+    const repos1 = result.user.repositories;
+    let cursor = repos1.edges[repos1.edges.length - 1].cursor;
+    while (repos1.nodes.length < maxRepos) {
+      const res2 = await fetchNext(token, userName, cursor);
+      if (res2.data) {
+        const repos2 = res2.data.user.repositories;
+        repos1.nodes.push(...repos2.nodes);
+        if (repos2.nodes.length !== maxReposOneQuery) {
+          break;
         }
+        cursor = repos2.edges[repos2.edges.length - 1].cursor;
+      } else {
+        break;
+      }
     }
-    return res1;
+  }
+  return res1;
 };

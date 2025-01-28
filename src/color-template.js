@@ -24,6 +24,7 @@ export const NorthSeasonSettings = {
   strongColor: "#111133",
   weakColor: "gray",
   radarColor: "#47a042",
+  textColors: "#EB5A3C",
   contribColors1: ["#efefef", "#ffe7ff", "#edaeda", "#e492ca", "#ba7aad"], // spring
   contribColors2: ["#efefef", "#d8e887", "#8cc569", "#47a042", "#1d6a23"], // summer
   contribColors3: ["#efefef", "#ffed4a", "#ffc402", "#fe9400", "#fa6100"], // autumn
@@ -36,6 +37,7 @@ export const NightViewSettings = {
   strongColor: "rgb(255,200,55)",
   weakColor: "#aaaaaa",
   radarColor: "rgb(255,200,55)",
+  textColors: "#0D92F4",
   contribColors: [
     "rgb(25,60,130)",
     "rgb(25,90,210)",
@@ -51,15 +53,17 @@ export const NightGreenSettings = {
   strongColor: "rgb(255,200,55)",
   weakColor: "#aaaaaa",
   radarColor: "#47a042",
+  textColors: "#16C47F",
   contribColors: ["#444444", "#1B7D28", "#24A736", "#2DD143", "#57DA69"],
 };
 export const GitBlockSettings = {
   type: "bitmap",
-  backgroundColor: "#ffffff",
+  backgroundColor: "#09122C",
   foregroundColor: "#00000f",
   strongColor: "#111133",
   weakColor: "gray",
   radarColor: "#47a042",
+  textColors: "#E82561",
   contribPatterns: [
     {
       top: {
