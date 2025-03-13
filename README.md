@@ -6,7 +6,7 @@
 
 ## Activities
 
-![svg](https://raw.githubusercontent.com/isharaimagines/isharaimagines/refs/heads/main/profile-3d-contrib/profile-night-view.svg)
+![svg](https://raw.githubusercontent.com/isharaimagines/isharaimagines/refs/heads/main/profile-3d-contrib/profile-gitblock.svg)
 
 ### Badges
 
