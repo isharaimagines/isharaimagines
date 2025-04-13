@@ -43,225 +43,225 @@ export const createSvg = (userInfo, settings, isForcedAnimation) => {
     settings,
     isForcedAnimation
   );
-  const contributions = userInfo.contributionCalendar;
-  const sortedContributions = contributions.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
+  // const contributions = userInfo.contributionCalendar;
+  // const sortedContributions = contributions.sort(
+  //   (a, b) => new Date(a.date) - new Date(b.date)
+  // );
 
-  const lastContribution = sortedContributions[sortedContributions.length - 1];
+  // const lastContribution = sortedContributions[sortedContributions.length - 1];
 
-  const lastContributionDate = new Date(lastContribution.date);
+  // const lastContributionDate = new Date(lastContribution.date);
 
-  const lastDate = lastContributionDate.toLocaleString("default", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  // const lastDate = lastContributionDate.toLocaleString("default", {
+  //   month: "short",
+  //   day: "numeric",
+  //   year: "numeric",
+  // });
 
-  const bestContribution = sortedContributions.reduce((best, current) =>
-    current.contributionCount > best.contributionCount ? current : best
-  );
+  // const bestContribution = sortedContributions.reduce((best, current) =>
+  //   current.contributionCount > best.contributionCount ? current : best
+  // );
 
-  const bestDate = new Date(bestContribution.date);
-  const bestMonth = bestDate.toLocaleString("default", { month: "short" });
-  const bestDay = bestDate.getDate();
-  const bestCount = bestContribution.contributionCount;
+  // const bestDate = new Date(bestContribution.date);
+  // const bestMonth = bestDate.toLocaleString("default", { month: "short" });
+  // const bestDay = bestDate.getDate();
+  // const bestCount = bestContribution.contributionCount;
 
-  const group = svg.append("g");
-  const titleBoxWidth = 250;
-  const titleBoxHeight = 130;
+  // const group = svg.append("g");
+  // const titleBoxWidth = 250;
+  // const titleBoxHeight = 130;
 
-  // top right box
-  group
-    .append("rect")
-    .attr("x", svgWidth - titleBoxWidth - 60)
-    .attr("y", 90)
-    .attr("width", titleBoxWidth)
-    .attr("height", titleBoxHeight)
-    .attr("fill", settings.backgroundColor)
-    .attr("stroke", "#fafafa")
-    .attr("stroke-width", 1)
-    .attr("rx", 8)
-    .attr("ry", 8);
+  // // top right box
+  // group
+  //   .append("rect")
+  //   .attr("x", svgWidth - titleBoxWidth - 60)
+  //   .attr("y", 90)
+  //   .attr("width", titleBoxWidth)
+  //   .attr("height", titleBoxHeight)
+  //   .attr("fill", settings.backgroundColor)
+  //   .attr("stroke", "#fafafa")
+  //   .attr("stroke-width", 1)
+  //   .attr("rx", 8)
+  //   .attr("ry", 8);
 
-  // top right box title
-  group
-    .append("text")
-    .style("font-size", "18px")
-    .style("font-weight", "bold")
-    .attr("x", svgWidth - titleBoxWidth - 60)
-    .attr("y", 75)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Contributions");
+  // // top right box title
+  // group
+  //   .append("text")
+  //   .style("font-size", "18px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", svgWidth - titleBoxWidth - 60)
+  //   .attr("y", 75)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Contributions");
 
-  group
-    .append("text")
-    .style("font-size", "36px")
-    .attr("x", svgWidth - 280)
-    .attr("y", 140)
-    .attr("text-anchor", "start")
-    .attr("fill", settings.textColors)
-    .text(inertThousandSeparator(userInfo.totalContributions));
+  // group
+  //   .append("text")
+  //   .style("font-size", "36px")
+  //   .attr("x", svgWidth - 280)
+  //   .attr("y", 140)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", settings.textColors)
+  //   .text(inertThousandSeparator(userInfo.totalContributions));
 
-  group
-    .append("text")
-    .style("font-size", "16px")
-    .style("font-weight", "bold")
-    .attr("x", svgWidth - 280)
-    .attr("y", 170)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Total");
+  // group
+  //   .append("text")
+  //   .style("font-size", "16px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", svgWidth - 280)
+  //   .attr("y", 170)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Total");
 
-  group
-    .append("text")
-    .style("font-size", "14px")
-    .attr("x", svgWidth - 280)
-    .attr("y", 190)
-    .attr("text-anchor", "start")
-    .attr("fill", "#dddddd")
-    .text(`${lastDate}`);
+  // group
+  //   .append("text")
+  //   .style("font-size", "14px")
+  //   .attr("x", svgWidth - 280)
+  //   .attr("y", 190)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#dddddd")
+  //   .text(`${lastDate}`);
 
-  // Best day contribution
-  group
-    .append("text")
-    .style("font-size", "36px")
-    .attr("x", svgWidth - 160)
-    .attr("y", 140)
-    .attr("text-anchor", "start")
-    .attr("fill", settings.textColors)
-    .text(bestCount);
+  // // Best day contribution
+  // group
+  //   .append("text")
+  //   .style("font-size", "36px")
+  //   .attr("x", svgWidth - 160)
+  //   .attr("y", 140)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", settings.textColors)
+  //   .text(bestCount);
 
-  group
-    .append("text")
-    .style("font-size", "16px")
-    .style("font-weight", "bold")
-    .attr("x", svgWidth - 160)
-    .attr("y", 170)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Best day");
+  // group
+  //   .append("text")
+  //   .style("font-size", "16px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", svgWidth - 160)
+  //   .attr("y", 170)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Best day");
 
-  group
-    .append("text")
-    .style("font-size", "14px")
-    .attr("x", svgWidth - 160)
-    .attr("y", 190)
-    .attr("text-anchor", "start")
-    .attr("fill", "#dddddd")
-    .text(`${bestMonth}-${bestDay}`);
+  // group
+  //   .append("text")
+  //   .style("font-size", "14px")
+  //   .attr("x", svgWidth - 160)
+  //   .attr("y", 190)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#dddddd")
+  //   .text(`${bestMonth}-${bestDay}`);
 
-  // bottom left box
-  group
-    .append("rect")
-    .attr("x", 50)
-    .attr("y", 700)
-    .attr("width", 500)
-    .attr("height", titleBoxHeight)
-    .attr("fill", settings.backgroundColor)
-    .attr("stroke", "#fafafa")
-    .attr("stroke-width", 1)
-    .attr("rx", 8)
-    .attr("ry", 8);
+  // // bottom left box
+  // group
+  //   .append("rect")
+  //   .attr("x", 50)
+  //   .attr("y", 700)
+  //   .attr("width", 500)
+  //   .attr("height", titleBoxHeight)
+  //   .attr("fill", settings.backgroundColor)
+  //   .attr("stroke", "#fafafa")
+  //   .attr("stroke-width", 1)
+  //   .attr("rx", 8)
+  //   .attr("ry", 8);
 
-  // Commit contribution
-  group
-    .append("text")
-    .style("font-size", "36px")
-    .attr("x", 80)
-    .attr("y", 750)
-    .attr("text-anchor", "start")
-    .attr("fill", settings.textColors)
-    .text(inertThousandSeparator(userInfo.totalCommitContributions));
+  // // Commit contribution
+  // group
+  //   .append("text")
+  //   .style("font-size", "36px")
+  //   .attr("x", 80)
+  //   .attr("y", 750)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", settings.textColors)
+  //   .text(inertThousandSeparator(userInfo.totalCommitContributions));
 
-  group
-    .append("text")
-    .style("font-size", "16px")
-    .style("font-weight", "bold")
-    .attr("x", 80)
-    .attr("y", 780)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Commit");
+  // group
+  //   .append("text")
+  //   .style("font-size", "16px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", 80)
+  //   .attr("y", 780)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Commit");
 
-  group
-    .append("text")
-    .style("font-size", "14px")
-    .attr("x", 80)
-    .attr("y", 800)
-    .attr("text-anchor", "start")
-    .attr("fill", "#dddddd")
-    .text(`${lastDate}`);
+  // group
+  //   .append("text")
+  //   .style("font-size", "14px")
+  //   .attr("x", 80)
+  //   .attr("y", 800)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#dddddd")
+  //   .text(`${lastDate}`);
 
-  // Issue contributions
-  group
-    .append("text")
-    .style("font-size", "36px")
-    .attr("x", 200)
-    .attr("y", 750)
-    .attr("text-anchor", "start")
-    .attr("fill", settings.textColors)
-    .text(inertThousandSeparator(userInfo.totalIssueContributions));
+  // // Issue contributions
+  // group
+  //   .append("text")
+  //   .style("font-size", "36px")
+  //   .attr("x", 200)
+  //   .attr("y", 750)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", settings.textColors)
+  //   .text(inertThousandSeparator(userInfo.totalIssueContributions));
 
-  group
-    .append("text")
-    .style("font-size", "16px")
-    .style("font-weight", "bold")
-    .attr("x", 200)
-    .attr("y", 780)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Issue");
+  // group
+  //   .append("text")
+  //   .style("font-size", "16px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", 200)
+  //   .attr("y", 780)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Issue");
 
-  // total PullRequest contributions
-  group
-    .append("text")
-    .style("font-size", "36px")
-    .attr("x", 320)
-    .attr("y", 750)
-    .attr("text-anchor", "start")
-    .attr("fill", settings.textColors)
-    .text(inertThousandSeparator(userInfo.totalPullRequestContributions));
+  // // total PullRequest contributions
+  // group
+  //   .append("text")
+  //   .style("font-size", "36px")
+  //   .attr("x", 320)
+  //   .attr("y", 750)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", settings.textColors)
+  //   .text(inertThousandSeparator(userInfo.totalPullRequestContributions));
 
-  group
-    .append("text")
-    .style("font-size", "16px")
-    .style("font-weight", "bold")
-    .attr("x", 300)
-    .attr("y", 780)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Pull Request");
+  // group
+  //   .append("text")
+  //   .style("font-size", "16px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", 300)
+  //   .attr("y", 780)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Pull Request");
 
-  group
-    .append("text")
-    .style("font-size", "14px")
-    .attr("x", 300)
-    .attr("y", 800)
-    .attr("text-anchor", "start")
-    .attr("fill", "#dddddd")
-    .text(`${lastDate}`);
+  // group
+  //   .append("text")
+  //   .style("font-size", "14px")
+  //   .attr("x", 300)
+  //   .attr("y", 800)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#dddddd")
+  //   .text(`${lastDate}`);
 
-  // total Fork contributions
-  group
-    .append("text")
-    .style("font-size", "36px")
-    .attr("x", 450)
-    .attr("y", 750)
-    .attr("text-anchor", "start")
-    .attr("fill", settings.textColors)
-    .text(inertThousandSeparator(userInfo.totalForkCount));
+  // // total Fork contributions
+  // group
+  //   .append("text")
+  //   .style("font-size", "36px")
+  //   .attr("x", 450)
+  //   .attr("y", 750)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", settings.textColors)
+  //   .text(inertThousandSeparator(userInfo.totalForkCount));
 
-  group
-    .append("text")
-    .style("font-size", "16px")
-    .style("font-weight", "bold")
-    .attr("x", 450)
-    .attr("y", 780)
-    .attr("text-anchor", "start")
-    .attr("fill", "#fafafa")
-    .text("Fork");
+  // group
+  //   .append("text")
+  //   .style("font-size", "16px")
+  //   .style("font-weight", "bold")
+  //   .attr("x", 450)
+  //   .attr("y", 780)
+  //   .attr("text-anchor", "start")
+  //   .attr("fill", "#fafafa")
+  //   .text("Fork");
 
   return container.html();
 };
