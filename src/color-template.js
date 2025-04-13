@@ -58,7 +58,7 @@ export const NightGreenSettings = {
 };
 export const GitBlockSettings = {
   type: "bitmap",
-  backgroundColor: "#09122C",
+  backgroundColor: "transparent",
   foregroundColor: "#00000f",
   strongColor: "#111133",
   weakColor: "gray",
