@@ -15,7 +15,4 @@
 ## Activities
 
 ### Badges
-
-#### My GitHub Stats
-
 <img align="center" height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isharaimagines&hide=html,css&layout=compact&theme=nightowl" alt=isharaimagines />
