@@ -19,7 +19,7 @@
 // Northern hemisphere
 export const NorthSeasonSettings = {
   type: "season",
-  backgroundColor: "#ffffff",
+  backgroundColor: "transparent",
   foregroundColor: "#00000f",
   strongColor: "#111133",
   weakColor: "gray",
