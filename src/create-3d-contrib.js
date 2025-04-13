@@ -219,18 +219,26 @@ export const create3DContrib = (
       settings.type === "bitmap"
         ? Math.max(1, settings.contribPatterns[contribLevel].top.width)
         : dxx;
+    // const topPanel = bar
+    //   .append("rect")
+    //   .attr("stroke", "none")
+    //   .attr("x", 0)
+    //   .attr("y", 0)
+    //   .attr("width", toFixed(widthTop))
+    //   .attr("height", toFixed(widthTop))
+    //   .attr(
+    //     "transform",
+    //     `skewY(${-ANGLE}) skewX(${-ANGLE})
+    //     )}) scale(${toFixed(dxx / widthTop)} ${toFixed((2 * dyy) / widthTop)})`
+    //   );
     const topPanel = bar
       .append("rect")
       .attr("stroke", "none")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", toFixed(widthTop))
-      .attr("height", toFixed(widthTop))
-      .attr(
-        "transform",
-        `skewY(${-ANGLE}) skewX(${-ANGLE})
-        )}) scale(${toFixed(dxx / widthTop)} ${toFixed((2 * dyy) / widthTop)})`
-      );
+      .attr("width", toFixed(dxx))
+      .attr("height", toFixed(dxx));
+
     // const topPanel = bar
     //   .append("rect")
     //   .attr("stroke", "none")
