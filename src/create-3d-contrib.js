@@ -246,81 +246,81 @@ export const create3DContrib = (
     } else if (settings.type === "bitmap") {
       addBitmapPattern(topPanel, contribLevel, "top");
     }
-    const widthLeft =
-      settings.type === "bitmap"
-        ? Math.max(1, settings.contribPatterns[contribLevel].left.width)
-        : dxx;
-    const scaleLeft = Math.sqrt(dxx ** 2 + dyy ** 2) / widthLeft;
-    const heightLeft = calHeight / scaleLeft;
-    const leftPanel = bar
-      .append("rect")
-      .attr("stroke", "none")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("width", toFixed(widthLeft))
-      .attr("height", toFixed(heightLeft))
-      .attr(
-        "transform",
-        `skewY(${ANGLE}) scale(${toFixed(dxx / widthLeft)} ${toFixed(
-          scaleLeft
-        )})`
-      );
-    if (settings.type === "normal") {
-      addNormalColor(leftPanel, contribLevel, settings, DARKER_LEFT);
-    } else if (settings.type === "season") {
-      addSeasonColor(leftPanel, contribLevel, settings, DARKER_LEFT, cal.date);
-    } else if (settings.type === "bitmap") {
-      addBitmapPattern(leftPanel, contribLevel, "left");
-    }
-    if (isAnimate && contribLevel !== 0) {
-      leftPanel
-        .append("animate")
-        .attr("attributeName", "height")
-        .attr("values", `${toFixed(3 / scaleLeft)};${toFixed(heightLeft)}`)
-        .attr("dur", "3s")
-        .attr("repeatCount", "1");
-    }
-    const widthRight =
-      settings.type === "bitmap"
-        ? Math.max(1, settings.contribPatterns[contribLevel].right.width)
-        : dxx;
-    const scaleRight = Math.sqrt(dxx ** 2 + dyy ** 2) / widthRight;
-    const heightRight = calHeight / scaleRight;
-    const rightPanel = bar
-      .append("rect")
-      .attr("stroke", "none")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("width", toFixed(widthRight))
-      .attr("height", toFixed(heightRight))
-      .attr(
-        "transform",
-        `translate(${toFixed(dxx)} ${toFixed(
-          dyy
-        )}) skewY(${-ANGLE}) scale(${toFixed(dxx / widthRight)} ${toFixed(
-          scaleRight
-        )})`
-      );
-    if (settings.type === "normal") {
-      addNormalColor(rightPanel, contribLevel, settings, DARKER_RIGHT);
-    } else if (settings.type === "season") {
-      addSeasonColor(
-        rightPanel,
-        contribLevel,
-        settings,
-        DARKER_RIGHT,
-        cal.date
-      );
-    } else if (settings.type === "bitmap") {
-      addBitmapPattern(rightPanel, contribLevel, "right");
-    }
-    if (isAnimate && contribLevel !== 0) {
-      rightPanel
-        .append("animate")
-        .attr("attributeName", "height")
-        .attr("values", `${toFixed(3 / scaleRight)};${toFixed(heightRight)}`)
-        .attr("dur", "3s")
-        .attr("repeatCount", "1");
-    }
+    // const widthLeft =
+    //   settings.type === "bitmap"
+    //     ? Math.max(1, settings.contribPatterns[contribLevel].left.width)
+    //     : dxx;
+    // const scaleLeft = Math.sqrt(dxx ** 2 + dyy ** 2) / widthLeft;
+    // const heightLeft = calHeight / scaleLeft;
+    // const leftPanel = bar
+    //   .append("rect")
+    //   .attr("stroke", "none")
+    //   .attr("x", 0)
+    //   .attr("y", 0)
+    //   .attr("width", toFixed(widthLeft))
+    //   .attr("height", toFixed(heightLeft))
+    //   .attr(
+    //     "transform",
+    //     `skewY(${ANGLE}) scale(${toFixed(dxx / widthLeft)} ${toFixed(
+    //       scaleLeft
+    //     )})`
+    //   );
+    // if (settings.type === "normal") {
+    //   addNormalColor(leftPanel, contribLevel, settings, DARKER_LEFT);
+    // } else if (settings.type === "season") {
+    //   addSeasonColor(leftPanel, contribLevel, settings, DARKER_LEFT, cal.date);
+    // } else if (settings.type === "bitmap") {
+    //   addBitmapPattern(leftPanel, contribLevel, "left");
+    // }
+    // if (isAnimate && contribLevel !== 0) {
+    //   leftPanel
+    //     .append("animate")
+    //     .attr("attributeName", "height")
+    //     .attr("values", `${toFixed(3 / scaleLeft)};${toFixed(heightLeft)}`)
+    //     .attr("dur", "3s")
+    //     .attr("repeatCount", "1");
+    // }
+    // const widthRight =
+    //   settings.type === "bitmap"
+    //     ? Math.max(1, settings.contribPatterns[contribLevel].right.width)
+    //     : dxx;
+    // const scaleRight = Math.sqrt(dxx ** 2 + dyy ** 2) / widthRight;
+    // const heightRight = calHeight / scaleRight;
+    // const rightPanel = bar
+    //   .append("rect")
+    //   .attr("stroke", "none")
+    //   .attr("x", 0)
+    //   .attr("y", 0)
+    //   .attr("width", toFixed(widthRight))
+    //   .attr("height", toFixed(heightRight))
+    //   .attr(
+    //     "transform",
+    //     `translate(${toFixed(dxx)} ${toFixed(
+    //       dyy
+    //     )}) skewY(${-ANGLE}) scale(${toFixed(dxx / widthRight)} ${toFixed(
+    //       scaleRight
+    //     )})`
+    //   );
+    // if (settings.type === "normal") {
+    //   addNormalColor(rightPanel, contribLevel, settings, DARKER_RIGHT);
+    // } else if (settings.type === "season") {
+    //   addSeasonColor(
+    //     rightPanel,
+    //     contribLevel,
+    //     settings,
+    //     DARKER_RIGHT,
+    //     cal.date
+    //   );
+    // } else if (settings.type === "bitmap") {
+    //   addBitmapPattern(rightPanel, contribLevel, "right");
+    // }
+    // if (isAnimate && contribLevel !== 0) {
+    //   rightPanel
+    //     .append("animate")
+    //     .attr("attributeName", "height")
+    //     .attr("values", `${toFixed(3 / scaleRight)};${toFixed(heightRight)}`)
+    //     .attr("dur", "3s")
+    //     .attr("repeatCount", "1");
+    // }
   });
 };
