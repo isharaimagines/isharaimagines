@@ -1,4 +1,4 @@
-# Hello there!
+# Hi there <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" height="30px" /> I am Ishara Siriwardhana
 
 <img src="https://github.com/user-attachments/assets/8fe96759-d139-499c-a842-d9215c1e839a" alt="drawing" width="100"/>
 
