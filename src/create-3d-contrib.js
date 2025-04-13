@@ -219,19 +219,27 @@ export const create3DContrib = (
       settings.type === "bitmap"
         ? Math.max(1, settings.contribPatterns[contribLevel].top.width)
         : dxx;
+    // const topPanel = bar
+    //   .append("rect")
+    //   .attr("stroke", "none")
+    //   .attr("x", 0)
+    //   .attr("y", 0)
+    //   .attr("width", toFixed(widthTop))
+    //   .attr("height", toFixed(widthTop))
+    //   .attr(
+    //     "transform",
+    //     `skewY(${-ANGLE}) skewX(${toFixed(
+    //       atan(dxx / 2 / dyy)
+    //     )}) scale(${toFixed(dxx / widthTop)} ${toFixed((2 * dyy) / widthTop)})`
+    //   );
     const topPanel = bar
       .append("rect")
       .attr("stroke", "none")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", toFixed(widthTop))
-      .attr("height", toFixed(widthTop))
-      .attr(
-        "transform",
-        `skewY(${-ANGLE}) skewX(${toFixed(
-          atan(dxx / 2 / dyy)
-        )}) scale(${toFixed(dxx / widthTop)} ${toFixed((2 * dyy) / widthTop)})`
-      );
+      .attr("width", toFixed(dxx))
+      .attr("height", toFixed(dxx)); // Square tile
+    
     if (settings.type === "normal") {
       addNormalColor(topPanel, contribLevel, settings, DARKER_TOP);
     } else if (settings.type === "season") {
