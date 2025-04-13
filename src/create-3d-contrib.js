@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { toFixed } from "./utils.js";
 // import * as util from "./utils.js";
-const ANGLE = 30;
+const ANGLE = 90;
 const DARKER_RIGHT = 1;
 const DARKER_LEFT = 0.5;
 const DARKER_TOP = 0;
