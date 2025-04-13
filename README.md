@@ -1,17 +1,18 @@
-# Hi there <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" height="30px" /> I am Ishara Siriwardhana
-
-<img src="https://github.com/user-attachments/assets/8fe96759-d139-499c-a842-d9215c1e839a" alt="drawing" width="100"/>
+```
+ ('-. .-.               .-') _    ('-. .-.   ('-.  _  .-')     ('-.   
+( OO )  /              (  OO) )  ( OO )  / _(  OO)( \( -O )  _(  OO)  
+,--. ,--.  ,-.-')      /     '._ ,--. ,--.(,------.,------. (,------. 
+|  | |  |  |  |OO)     |'--...__)|  | |  | |  .---'|   /`. ' |  .---' 
+|   .|  |  |  |  \     '--.  .--'|   .|  | |  |    |  /  | | |  |     
+|       |  |  |(_/        |  |   |       |(|  '--. |  |_.' |(|  '--.  
+|  .-.  | ,|  |_.'        |  |   |  .-.  | |  .--' |  .  '.' |  .--'  
+|  | |  |(_|  |           |  |   |  | |  | |  `---.|  |\  \  |  `---. 
+`--' `--'  `--'           `--'   `--' `--' `------'`--' '--' `------' 
+```
 
 <p>I am a dedicated and passionate computer science student currently pursuing my BSc (Hon) in Computer Science at Plymouth University, with an expected graduation in December 2025. My technological journey has been marked by a strong commitment to innovation and problem-solving, demonstrated through various projects and internships. As a Technology Specialist at Kyri Media, I challenge successfully related to management, addressed to social email media marketing, and SEO, enhancing the company's digital presence. My hands-on experience extends to developing AI models, Full-stack and design UI/UX. </p>
 
 ## Activities
-<Embed
-  html={false}
-  url="https://www.gitch.art/api/og/isharaimagines?color=74b816"
-  title="RDMD CSS theming and style adjustments. by rafegoldberg · Pull Request #671 · readmeio/api-explorer"
-  favicon="https://www.gitch.art/api/og/isharaimagines?color=74b816"
-  image="https://www.gitch.art/api/og/isharaimagines?color=74b816"
-/>
 
 <iframe src="https://www.gitch.art/api/og/isharaimagines?color=74b816" width="1200" height="180" frameborder="0" scrolling="no"></iframe>
 
