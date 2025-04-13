@@ -14,8 +14,6 @@
 
 ## Activities
 
-<iframe src="https://www.gitch.art/api/og/isharaimagines?color=74b816" width="1200" height="180" frameborder="0" scrolling="no"></iframe>
-
 ### Badges
 
 #### My GitHub Stats
