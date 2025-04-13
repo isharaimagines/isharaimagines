@@ -228,8 +228,7 @@ export const create3DContrib = (
       .attr("height", toFixed(widthTop))
       .attr(
         "transform",
-        `skewY(${-ANGLE}) skewX(${toFixed(
-          atan(dxx / 2 / dyy)
+        `skewY(${-ANGLE}) skewX(${-ANGLE})
         )}) scale(${toFixed(dxx / widthTop)} ${toFixed((2 * dyy) / widthTop)})`
       );
     // const topPanel = bar
