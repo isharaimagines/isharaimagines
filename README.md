@@ -17,26 +17,20 @@
 
 ### Connect with me
 <div align="left">
-  <a href="https://discord.gg/uyigioh" target="blank">
+  <a href="https://www.linkedin.com/in/isharaimagines" target="blank">
    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/linkedin/default.svg" width="52" height="40" alt="linkedin logo"  />
   </a>
- <a href="https://discord.gg/uyigioh" target="blank">
+ <a href="https://discord.gg/CfeckfzSGA" target="blank">
   <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/discord/default.svg" width="52" height="40" alt="discord logo"  />
  </a>
- <a href="https://discord.gg/uyigioh" target="blank">
+ <a href="https://youtube.com/@isharadevelop" target="blank">
   <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/youtube/default.svg" width="52" height="40" alt="youtube logo"  />
  </a>
  <a href="https://discord.gg/uyigioh" target="blank">
   <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/behance/default.svg" width="52" height="40" alt="behance logo"  />
  </a>
- <a href="https://discord.gg/uyigioh" target="blank">
-  <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/gmail/default.svg" width="52" height="40" alt="gmail logo"  />
- </a>
- <a href="https://discord.gg/uyigioh" target="blank">
-  <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/telegram/default.svg" width="52" height="40" alt="telegram logo"  />
- </a>
- <a href="https://discord.gg/uyigioh" target="blank">
-  <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/twitch/default.svg" width="52" height="40" alt="twitch logo"  />
+  <a href="https://wa.me/message/B6VWOLULZIJEP1" target="blank">
+  <img src="https://www.svgrepo.com/show/303150/whatsapp-symbol-logo.svg" width="52" height="40" alt="behance logo"  />
  </a>
  </div>
 
