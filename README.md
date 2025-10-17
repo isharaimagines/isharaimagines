@@ -31,7 +31,7 @@
   <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/behance/default.svg" width="52" height="40" alt="behance logo"  />
  </a>
   <a href="https://wa.me/message/B6VWOLULZIJEP1" target="blank">
-  <img src="https://www.svgrepo.com/show/452133/whatsapp.svg" width="52" height="40" alt="behance logo"  />
+  <img src="https://www.svgrepo.com/show/452133/whatsapp.svg" width="52" height="40" alt="whatsapp logo"  />
  </a>
  </div>
 
