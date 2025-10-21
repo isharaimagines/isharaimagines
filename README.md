@@ -18,7 +18,7 @@
 As COO/CTO of CoreWave, I was responsible for shaping the company’s product strategy, technology roadmap, and development.   I successfully led implementation projects for three clients across various sectors, including retail, education, and healthcare. These initiatives resulted in measurable operational improvements, achieving cost and time savings ranging from 10% to 30%. 
 </p>
 
-### Connect with me
+### Connect
 
 <div align="center">
   <a href="https://www.linkedin.com/in/isharasiriwardhana" target="blank">
